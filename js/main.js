@@ -56,11 +56,11 @@ document.querySelector("#my-after-carousel").innerHTML =`
 <button class="btn btn-danger" id="my-btn-revert">Revert!</button>
 `;
 
-
+// £ call of the function that starts the eventlisteners(click on btn: next/prev slideshow/pause)
 start();
 
-//  ! *************************** revert*******************************
 
+//  ! *************************** revert the array *******************************
 const btnRevert = document.getElementById("my-btn-revert");
 btnRevert.addEventListener("click",function(){
     
