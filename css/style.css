@@ -13,7 +13,7 @@ div.my-carousel-container{
 div.my-carousel-images{
     min-height: 540px;
     padding: 2rem;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 }
 
 
@@ -47,7 +47,7 @@ div.my-thumbnails{
     min-height: 160px;
     display: flex;
     padding: 2rem; 
-    background: aliceblue;
+    background: rgb(32, 32, 32);
 }
 
 div.my-thumbnails .my-container-img{
