@@ -79,7 +79,7 @@ div.my-next{
 div.my-previous > span::after{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    content: "\f7fb";
+    content: "\f0a5";
     line-height: 30px;
     cursor: pointer;
 }
@@ -87,7 +87,7 @@ div.my-previous > span::after{
 div.my-next > span::after{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    content: "\f520";
+    content: "\f0a4";
     line-height: 30px;
     cursor: pointer;
 }
@@ -103,4 +103,12 @@ div.my-next > span::after{
     display: inline-block;
     filter:brightness(1);
     border: 3px rgb(197, 197, 197) solid;
+}
+
+#my-after-carousel{
+    background-color: transparent;
+}
+
+#my-btn-play{
+    margin-right: .5rem;
 }

@@ -120,8 +120,8 @@ btnNext.addEventListener("click",function(){
 
 // £add buttons to the html
 document.querySelector("#my-after-carousel").innerHTML =`
-<button class="btn btn-primary" id="my-btn-play">Play!</button>
-<button class="btn btn-warning" id="my-btn-stop">Stop!</button>
+<button class="btn btn-dark" id="my-btn-play">Slideshow!</button>
+<button class="btn btn-light" id="my-btn-pause">Pause!</button>
 `;
 
 
@@ -146,8 +146,8 @@ btnPlay.addEventListener("click",function(){
         containerBigCard[active].classList.add("activeElement-big");
     }
 
-    const btnStop = document.querySelector("#my-btn-stop");
-    btnStop.addEventListener("click",function(){
+    const btnPause = document.querySelector("#my-btn-pause");
+    btnPause.addEventListener("click",function(){
 
         clearInterval(scrollInetrval);
     
