@@ -1,29 +1,29 @@
 
-const countries = [
+const guzzantiCharacter = [
     {
-        name: "Svezia",
-        description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        image: "01.jpg",
+        name: "Quelo",
+        quote:" 'Ti chiedi Come mai?, ti chiedi Quasi quasi? Dov'è la risposta?.La risposta non la devi cercare fuori, la risposta è dentro di te. E però è sbagliata!.' ",
+        image: "https://giusepperamerini.it/wp-content/uploads/2016/02/Quelo.jpg",
     },
     {
-        name: "Svizzera",
-        description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        image: "02.jpg",
+        name: "Robertetti",
+        quote:"A questo mondo nessuno ti dà niente per niente, sarebbe una perdita di tempo per tutti e due.",
+        image: "https://i.ytimg.com/vi/Q6jIxUHGY3M/hqdefault.jpg",
     },
     {
-        name: "Gran Bretagna",
-        description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        image: "03.jpg",
+        name: "Gianfranco Funari",
+        quote:" 'Vedi, io sono sempre stato un personaggio scomodo, ma mica per niente è la sciatica, io nun riesco a stà seduto.'",
+        image: "https://static.nexilia.it/nextquotidiano/2019/03/corrado-guzzanti.jpg",
     },
     {
-        name: "Germania",
-        description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        image: "04.jpg",
+        name: "Vulvia",
+        quote:"'Mbuto. 'Mbuto. Chi ha inventato il primo 'mbuto? Chi ha usato il primo 'mbuto per travasare l'acqua? Come faceva il primo 'mbuto? Si servivano di uno solo, o più due o più 'mbuti? 'mbuto, su rieducational channel... due o più 'mbuti... 'mbuto! bù'",
+        image:"https://pbs.twimg.com/media/EYph7JkX0AcLtKr.jpg",
     },
     {
-        name: "Paradise",
-        description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        image: "05.jpg",
+        name: "Padre Pizarro",
+        quote:"'A noi ce interessa la vita dar concepimento alla nascita: già dopo un quarto d'ora nun gliene frega più niente a nessuno. Prova te a cercà un asilo nido.'",
+        image: "https://cdn-static.dagospia.com/img/foto/03-2018/corrado-guzzanti-padre-pizzarro-993536.jpg",
     },
 ];
 
@@ -40,7 +40,7 @@ function insertElements(parent,array){
     for(let i = 0; i<array.length;i++){
         element.innerHTML += `
         <div class="my-container-img brightness">
-            <img src=img/${array[i].image} alt="${array[i].name}">
+            <img src=${array[i].image} alt="${array[i].name}">
         </div>
         `;
         htmlElements.push(element);
@@ -50,16 +50,16 @@ function insertElements(parent,array){
 }
 
 // £ print inside the html the list of elements big and small imgs
-//insertElements(".my-carousel-images",countries);
-insertElements(".my-thumbnails",countries);
+//insertElements(".my-carousel-images",guzzantiCharacter);
+insertElements(".my-thumbnails", guzzantiCharacter);
 
-for(let i = 0; i < countries.length; i++){
+for(let i = 0; i <  guzzantiCharacter.length; i++){
     document.querySelector(".my-carousel-images").innerHTML +=`
     <div class="my-container-img">
-        <img src=img/${countries[i].image} alt="${countries[i].name}">
-        <div class="my-container-description p-2">
-            <h2> ${countries[i].name} </h2>
-            <p> ${countries[i].description}</p>
+        <img src=${guzzantiCharacter[i].image} alt="${guzzantiCharacter[i].name}">
+        <div class="my-container-quote p-4">
+            <h2>${guzzantiCharacter[i].name}</h2>
+            <p>${guzzantiCharacter[i].quote}</p>
         </div>
     </div>
     `;
@@ -87,7 +87,7 @@ btnPrev.addEventListener("click", function(){
     containerSmallCard[active].classList.remove("activeElement-small");
 
     if(active === 0){
-        active = countries.length - 1;
+        active = guzzantiCharacter.length - 1;
     } else {
         active--;
     }
@@ -106,7 +106,7 @@ btnNext.addEventListener("click",function(){
     containerBigCard[active].classList.add("my-container-img");
     containerBigCard[active].classList.remove("activeElement-big");
 
-    if(active === countries.length - 1){
+    if(active === guzzantiCharacter.length - 1){
         active = 0;
     } else{
         active++;
@@ -135,7 +135,7 @@ btnPlay.addEventListener("click",function(){
         containerBigCard[active].classList.add("my-container-img");
         containerBigCard[active].classList.remove("activeElement-big");
     
-        if(active === countries.length - 1){
+        if(active === guzzantiCharacter.length - 1){
             active = 0;
         } else{
             active++;

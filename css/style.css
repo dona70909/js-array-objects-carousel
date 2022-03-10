@@ -1,6 +1,6 @@
 body{
     font-family: "Montserrat", sans-serif;
-    background-color: rgb(201, 231, 157);
+    background-color: rgb(245, 128, 144);
 }
 
 /* # big images container: mycarousel  container of all : my-carousel-container */
@@ -27,9 +27,18 @@ div.my-carousel-images{
     height: 100%;
 }
 
-.my-container-description{
+.my-container-quote{
     background-color: rgb(221, 231, 240);
-    padding: 1.5rem;
+}
+
+.my-container-quote > p{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.my-container-quote > h2{
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
 /* # SMALL IMAGES container thumbnail */
