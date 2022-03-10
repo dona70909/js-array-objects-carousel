@@ -13,7 +13,6 @@ div.my-carousel-container{
 div.my-carousel-images{
     min-height: 540px;
     padding: 2rem;
-    /* background-color: aliceblue; */
 }
 
 
@@ -28,7 +27,7 @@ div.my-carousel-images{
 }
 
 .my-container-quote{
-    background-color: rgb(221, 231, 240);
+    background-color: rgb(211, 212, 212);
 }
 
 .my-container-quote > p{
