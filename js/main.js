@@ -27,40 +27,24 @@ const guzzantiCharacter = [
     },
 ];
 
-/**
- * A function that returns an array of html elements 
- * each element contains a value taken from the array scrolled with the for iteration
- * @param {*} parent element to wich you add the html element
- * @param {*} array from wich you take the properties and their value
- * @returns {*} an array of htmlElements 
- */
-function insertElements(parent,array){
-    const element = document.querySelector(parent);
-    const htmlElements = [];
-    for(let i = 0; i<array.length;i++){
-        element.innerHTML += `
-        <div class="my-container-img brightness">
-            <img src=${array[i].image} alt="${array[i].name}">
-        </div>
-        `;
-        htmlElements.push(element);
-    }
 
-    return htmlElements;
-}
-
-// £ print inside the html the list of elements big and small imgs
-//insertElements(".my-carousel-images",guzzantiCharacter);
-insertElements(".my-thumbnails", guzzantiCharacter);
+const thumbnailsParent = document.querySelector(".my-thumbnails");
+const carouselImgsParent = document.querySelector(".my-carousel-images");
 
 for(let i = 0; i <  guzzantiCharacter.length; i++){
-    document.querySelector(".my-carousel-images").innerHTML +=`
+    carouselImgsParent.innerHTML +=`
     <div class="my-container-img">
-        <img src=${guzzantiCharacter[i].image} alt="${guzzantiCharacter[i].name}">
-        <div class="my-container-quote p-4">
-            <h2>${guzzantiCharacter[i].name}</h2>
-            <p>${guzzantiCharacter[i].quote}</p>
-        </div>
+    <img src=${guzzantiCharacter[i].image} alt="${guzzantiCharacter[i].name}">
+    <div class="my-container-quote p-4">
+    <h2>${guzzantiCharacter[i].name}</h2>
+    <p>${guzzantiCharacter[i].quote}</p>
+    </div>
+    </div>
+    `;
+    
+    thumbnailsParent.innerHTML += `
+    <div class="my-container-img brightness">
+    <img src=${guzzantiCharacter[i].image} alt="${guzzantiCharacter[i].name}">
     </div>
     `;
 }
@@ -80,78 +64,201 @@ containerBigCard[active].classList.add("activeElement-big");
 // # prev and next
 const btnPrev = document.querySelector(".my-prev-hook");
 btnPrev.addEventListener("click", function(){
-
+    
     containerBigCard[active].classList.add("my-container-img");
     containerBigCard[active].classList.remove("activeElement-big");
-
+    
     containerSmallCard[active].classList.remove("activeElement-small");
-
+    
     if(active === 0){
         active = guzzantiCharacter.length - 1;
     } else {
         active--;
     }
-
+    
     containerSmallCard[active].classList.add("activeElement-small");
     containerBigCard[active].classList.remove("my-container-img");
     containerBigCard[active].classList.add("activeElement-big");
-
+    
 });
 
 
 const btnNext = document.querySelector(".my-next-hook");
 btnNext.addEventListener("click",function(){
-
+    
     containerSmallCard[active].classList.remove("activeElement-small");
     containerBigCard[active].classList.add("my-container-img");
     containerBigCard[active].classList.remove("activeElement-big");
-
+    
     if(active === guzzantiCharacter.length - 1){
         active = 0;
     } else{
         active++;
     }
-
+    
     containerSmallCard[active].classList.add("activeElement-small");
     containerBigCard[active].classList.remove("my-container-img");
     containerBigCard[active].classList.add("activeElement-big");
-
+    
 });
 
 // £add buttons to the html
 document.querySelector("#my-after-carousel").innerHTML =`
 <button class="btn btn-dark" id="my-btn-play">Slideshow!</button>
 <button class="btn btn-light" id="my-btn-pause">Pause!</button>
+<button class="btn btn-danger" id="my-btn-reverte">Revert!</button>
 `;
 
 
 // %play and stop with timing functions
 const btnPlay = document.querySelector("#my-btn-play");
 btnPlay.addEventListener("click",function(){
-
+    
     const scrollInetrval = setInterval(scrollTime,2000);
     function scrollTime(){
         containerSmallCard[active].classList.remove("activeElement-small");
         containerBigCard[active].classList.add("my-container-img");
         containerBigCard[active].classList.remove("activeElement-big");
-    
+        
         if(active === guzzantiCharacter.length - 1){
             active = 0;
         } else{
             active++;
         }
-    
+        
         containerSmallCard[active].classList.add("activeElement-small");
         containerBigCard[active].classList.remove("my-container-img");
         containerBigCard[active].classList.add("activeElement-big");
     }
-
+    
     const btnPause = document.querySelector("#my-btn-pause");
     btnPause.addEventListener("click",function(){
-
+        
         clearInterval(scrollInetrval);
-    
+        
     });
 });
 
+
+//  ! *************************** revert *******************************
+
+const btnRevert = document.getElementById("my-btn-reverte");
+btnRevert.addEventListener("click",function(){
+    
+    thumbnailsParent.innerHTML = " ";
+    thumbnailsParent.innerHTML += `
+    <div class="my-previous position-absolute">
+    <span class="my-prev-hook"></span>
+    </div>
+    <div class="my-next position-absolute">
+    <span class="my-next-hook"></span>
+    </div>
+    `;
+    carouselImgsParent.innerHTML = " ";
+    
+    guzzantiCharacter.reverse();
+    
+    for(let i = 0; i <  guzzantiCharacter.length; i++){
+        carouselImgsParent.innerHTML +=`
+        <div class="my-container-img">
+        <img src=${guzzantiCharacter[i].image} alt="${guzzantiCharacter[i].name}">
+        <div class="my-container-quote p-4">
+        <h2>${guzzantiCharacter[i].name}</h2>
+        <p>${guzzantiCharacter[i].quote}</p>
+        </div>
+        </div>
+        `;
+        
+        thumbnailsParent.innerHTML += `
+        <div class="my-container-img brightness">
+        <img src=${guzzantiCharacter[i].image} alt="${guzzantiCharacter[i].name}">
+        </div>
+        `;
+    }
+    
+    // #active element counter
+    let active = 0;
+    const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
+    console.log(containerSmallCard);
+    const containerBigCard = document.querySelectorAll(".my-carousel-images > .my-container-img");
+    console.log(containerBigCard);
+    
+    // # first images
+    containerSmallCard[active].classList.add("activeElement-small");
+    containerBigCard[active].classList.remove("my-container-img");
+    containerBigCard[active].classList.add("activeElement-big");
+    
+    // # prev and next
+    const btnPrev = document.querySelector(".my-prev-hook");
+    btnPrev.addEventListener("click", function(){
+        
+        containerBigCard[active].classList.add("my-container-img");
+        containerBigCard[active].classList.remove("activeElement-big");
+        
+        containerSmallCard[active].classList.remove("activeElement-small");
+        
+        if(active === 0){
+            active = guzzantiCharacter.length - 1;
+        } else {
+            active--;
+        }
+        
+        containerSmallCard[active].classList.add("activeElement-small");
+        containerBigCard[active].classList.remove("my-container-img");
+        containerBigCard[active].classList.add("activeElement-big");
+        
+    });
+    
+    
+    const btnNext = document.querySelector(".my-next-hook");
+    btnNext.addEventListener("click",function(){
+        
+        containerSmallCard[active].classList.remove("activeElement-small");
+        containerBigCard[active].classList.add("my-container-img");
+        containerBigCard[active].classList.remove("activeElement-big");
+        
+        if(active === guzzantiCharacter.length - 1){
+            active = 0;
+        } else{
+            active++;
+        }
+        
+        containerSmallCard[active].classList.add("activeElement-small");
+        containerBigCard[active].classList.remove("my-container-img");
+        containerBigCard[active].classList.add("activeElement-big");
+        
+    });
+    
+    
+    // %play and stop with timing functions
+    const btnPlay = document.querySelector("#my-btn-play");
+    btnPlay.addEventListener("click",function(){
+        
+        const scrollInetrval = setInterval(scrollTime,2000);
+        function scrollTime(){
+            containerSmallCard[active].classList.remove("activeElement-small");
+            containerBigCard[active].classList.add("my-container-img");
+            containerBigCard[active].classList.remove("activeElement-big");
+            
+            if(active === guzzantiCharacter.length - 1){
+                active = 0;
+            } else{
+                active++;
+            }
+            
+            containerSmallCard[active].classList.add("activeElement-small");
+            containerBigCard[active].classList.remove("my-container-img");
+            containerBigCard[active].classList.add("activeElement-big");
+        }
+        
+        const btnPause = document.querySelector("#my-btn-pause");
+        btnPause.addEventListener("click",function(){
+            
+            clearInterval(scrollInetrval);
+            
+        });
+    });
+    
+    
+});
 

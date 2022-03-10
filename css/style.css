@@ -118,6 +118,6 @@ div.my-next > span::after{
     background-color: transparent;
 }
 
-#my-btn-play{
+#my-btn-pause{
     margin-right: .5rem;
 }
