@@ -44,6 +44,13 @@ const countries = [
     },
 ];
 
+/**
+ * A function that returns an array of html elements 
+ * each element contains a value taken from the array scrolled with the for iteration
+ * @param {*} parent element to wich you add the html element
+ * @param {*} array from wich you take the properties and their value
+ * @returns {*} an array of htmlElements 
+ */
 function insertElements(parent,array){
     const element = document.querySelector(parent);
     const htmlElements = [];
