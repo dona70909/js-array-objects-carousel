@@ -72,7 +72,7 @@ containerBigCard[active].classList.add("activeElement-big");
 const btnPrev = document.querySelector(".my-prev-hook");
 btnPrev.addEventListener("click", function(){
 
-    //containerBigCard[active].classList.remove("my-container-img");
+    containerBigCard[active].classList.add("my-container-img");
     containerBigCard[active].classList.remove("activeElement-big");
 
     containerSmallCard[active].classList.remove("activeElement-small");
@@ -85,7 +85,7 @@ btnPrev.addEventListener("click", function(){
 
     containerSmallCard[active].classList.add("activeElement-small");
 
-    //containerBigCard[active].classList.remove("my-container-img");
+    containerBigCard[active].classList.remove("my-container-img");
     containerBigCard[active].classList.add("activeElement-big");
 
 });
@@ -95,8 +95,7 @@ const btnNext = document.querySelector(".my-next-hook");
 btnNext.addEventListener("click",function(){
 
     containerSmallCard[active].classList.remove("activeElement-small");
-
-    //containerBigCard[active].classList.remove("my-container-img");
+    containerBigCard[active].classList.add("my-container-img");
     containerBigCard[active].classList.remove("activeElement-big");
 
     if(active === countries.length - 1){
