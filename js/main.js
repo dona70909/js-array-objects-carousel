@@ -45,18 +45,34 @@ const countries = [
 ];
 
 function insertElements(parent,array){
+    const element = document.querySelector(parent);
+    const htmlElements = [];
     for(let i = 0; i<array.length;i++){
-        document.querySelector(parent).innerHTML += `
+        element.innerHTML += `
         <div class="my-container-img">
-            <img src=img/${array[i].image} alt="">
+            <img src=img/${array[i].image} alt="${array[i].name}">
         </div>
         `;
+        htmlElements.push(element);
     }
+
+    return htmlElements;
 }
 
-
-insertElements(".my-carousel-images",countries);
+//insertElements(".my-carousel-images",countries);
 insertElements(".my-thumbnails",countries);
+
+for(let i = 0; i < countries.length; i++){
+    document.querySelector(".my-carousel-images").innerHTML +=`
+    <div class="my-container-img">
+        <img src=img/${countries[i].image} alt="${countries[i].name}">
+        <div class="my-container-descriptio p-2">
+            <h2> ${countries[i].name} </h2>
+            <p> ${countries[i].description}</p>
+        </div>
+    </div>
+    `;
+}
 
 let active = 0;
 const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
@@ -84,7 +100,6 @@ btnPrev.addEventListener("click", function(){
     }
 
     containerSmallCard[active].classList.add("activeElement-small");
-
     containerBigCard[active].classList.remove("my-container-img");
     containerBigCard[active].classList.add("activeElement-big");
 
