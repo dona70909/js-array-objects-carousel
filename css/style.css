@@ -2,6 +2,8 @@ body{
     font-family: "Montserrat", sans-serif;
 }
 
+/* # big images container: mycarousel  container of all : my-carousel-container */
+
 div.my-carousel-container{
     min-height: 700px;
     min-width:800px ;
@@ -13,16 +15,24 @@ div.my-carousel-images{
     min-height: 540px;
 }
 
+
+.my-carousel-images .my-container-img{
+    display: none;
+}
+
 .my-carousel-images  img{
     width: 100%;
     height: 100%;
 }
+
+/* # SMALL IMAGES container thumbnail */
 
 div.my-thumbnails{
     background-color: violet;
     min-height: 160px;
     display: flex;
 }
+
 div.my-thumbnails .my-container-img{
     width: calc(100% / 5);
 }
@@ -66,4 +76,17 @@ div.my-next > span::after{
     font-weight: 900;
     content: "\f520";
     line-height: 30px;
+}
+
+
+
+/* # Active class */
+.activeElement-big{
+    display:block;
+}
+
+.activeElement-small{
+    display: inline-block;
+    filter:brightness(1);
+    border: 3px rgb(197, 197, 197) solid;
 }

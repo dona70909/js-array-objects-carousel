@@ -54,5 +54,52 @@ function insertElements(parent,array){
     }
 }
 
+
 insertElements(".my-carousel-images",countries);
 insertElements(".my-thumbnails",countries);
+
+let active = 0;
+const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
+console.log(containerSmallCard);
+const containerBigCard = document.querySelectorAll(".my-carousel-images > .my-container-img");
+console.log(containerBigCard);
+
+containerSmallCard[active].classList.add("activeElement-small");
+containerBigCard[active].classList.remove("my-container-img");
+containerBigCard[active].classList.add("activeElement-big");
+
+
+const btnPrev = document.querySelector(".my-prev-hook");
+btnPrev.addEventListener("click", function(){
+
+    containerSmallCard[active].classList.remove("activeElement-small");
+    containerBigCard[active].classList.remove("my-container-img");
+
+    if(active === 0){
+        active = countries.length - 1;
+    } else {
+        active--;
+    }
+
+    containerSmallCard[active].classList.add("activeElement-small");
+    containerBigCard[active].classList.add("activeElement-big");
+
+});
+
+
+const btnNext = document.querySelector(".my-next-hook");
+btnNext.addEventListener("click",function(){
+
+    containerSmallCard[active].classList.remove("activeElement-small");
+    containerBigCard[active].classList.remove("activeElement-big");
+
+    if(active === countries.length - 1){
+        active = 0;
+    } else{
+        active++;
+    }
+
+    containerSmallCard[active].classList.add("activeElement-small");
+    containerBigCard[active].classList.add("activeElement-big");
+
+});
