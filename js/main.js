@@ -1,20 +1,3 @@
-/**
- 
-
-Riprendiamo l'esercizio carosello e rifacciamolo, questa volta usando gli oggetti, prendendo come riferimento il codice scritto oggi insieme a lezione, che troverete direttamente nella mia repository di github a questo link: [link github]
-
-Modifichiamo il codice dell'esercizio per renderlo funzionante con un array di oggetti al posto dei tre array separati, con una sola regola: non è possibile modificare l'HTML ma solamente JS e CSS.
-Ricordiamo sempre l'importanza dell'integrità del dato.
-
-Bonus 1:
-Sperimentiamo attraverso l'uso delle timing functions anche una funzionalità di scorrimento al nostro carosello:
-al click di un bottone o già dall'inizio possiamo far partire, ad intervalli di tempo a piacere, lo scorrimento delle immagini disponibili nel carosello stesso.
-
-Bonus 2:
-E se volessi un bottone per invertire la "direzione" del carosello?
-
- *
- */
 
 const countries = [
     {
@@ -66,6 +49,7 @@ function insertElements(parent,array){
     return htmlElements;
 }
 
+// £ print inside the html the list of elements big and small imgs
 //insertElements(".my-carousel-images",countries);
 insertElements(".my-thumbnails",countries);
 
@@ -81,17 +65,19 @@ for(let i = 0; i < countries.length; i++){
     `;
 }
 
+// #active element counter
 let active = 0;
 const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
 console.log(containerSmallCard);
 const containerBigCard = document.querySelectorAll(".my-carousel-images > .my-container-img");
 console.log(containerBigCard);
 
+// # first images
 containerSmallCard[active].classList.add("activeElement-small");
 containerBigCard[active].classList.remove("my-container-img");
 containerBigCard[active].classList.add("activeElement-big");
 
-
+// # prev and next
 const btnPrev = document.querySelector(".my-prev-hook");
 btnPrev.addEventListener("click", function(){
 
@@ -132,14 +118,14 @@ btnNext.addEventListener("click",function(){
 
 });
 
-
+// £add buttons to the html
 document.querySelector("#my-after-carousel").innerHTML =`
 <button class="btn btn-primary" id="my-btn-play">Play!</button>
 <button class="btn btn-warning" id="my-btn-stop">Stop!</button>
 `;
 
 
-
+// %play and stop with timing functions
 const btnPlay = document.querySelector("#my-btn-play");
 btnPlay.addEventListener("click",function(){
 
