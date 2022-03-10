@@ -1,13 +1,14 @@
 body{
     font-family: "Montserrat", sans-serif;
+    background-color: rgb(201, 231, 157);
 }
 
 /* # big images container: mycarousel  container of all : my-carousel-container */
 
 div.my-carousel-container{
     min-height: 700px;
-    min-width:800px ;
-    background-color: aquamarine;
+    min-width:800px;
+    border-radius: 10px;
 }
 
 div.my-carousel-images{
@@ -21,26 +22,36 @@ div.my-carousel-images{
 
 .my-carousel-images  img{
     width: 100%;
+    min-height: 540px;
     height: 100%;
+}
+
+.my-container-description{
+    background-color: rgb(221, 231, 240);
+    padding: 1.5rem;
 }
 
 /* # SMALL IMAGES container thumbnail */
 
 div.my-thumbnails{
-    background-color: violet;
     min-height: 160px;
     display: flex;
+    padding: 2rem;
+    background: aliceblue;
 }
 
 div.my-thumbnails .my-container-img{
     width: calc(100% / 5);
+}
+
+.brightness{
+    filter: brightness(.4);
 }
 div.my-thumbnails img{
     width:100%;
     min-height: 160px;
     height: 100%;
 }
-
 
 div.my-previous,
 div.my-next{
@@ -56,11 +67,11 @@ div.my-next{
 }
 
 div.my-previous{
-    left: 1rem;
+    left: 3.5rem;
 }
 
 div.my-next{
-    right: 1rem;
+    right: 3.5rem;
 }
 
 div.my-previous > span::after{
@@ -68,6 +79,7 @@ div.my-previous > span::after{
     font-weight: 900;
     content: "\f7fb";
     line-height: 30px;
+    cursor: pointer;
 }
 
 div.my-next > span::after{
@@ -75,6 +87,7 @@ div.my-next > span::after{
     font-weight: 900;
     content: "\f520";
     line-height: 30px;
+    cursor: pointer;
 }
 
 
@@ -82,6 +95,8 @@ div.my-next > span::after{
 /* # Active class */
 .activeElement-big{
     display:block;
+    padding: 2rem;
+    background-color: aliceblue;
 }
 
 .activeElement-small{

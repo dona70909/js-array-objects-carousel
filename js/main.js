@@ -39,7 +39,7 @@ function insertElements(parent,array){
     const htmlElements = [];
     for(let i = 0; i<array.length;i++){
         element.innerHTML += `
-        <div class="my-container-img">
+        <div class="my-container-img brightness">
             <img src=img/${array[i].image} alt="${array[i].name}">
         </div>
         `;
@@ -57,7 +57,7 @@ for(let i = 0; i < countries.length; i++){
     document.querySelector(".my-carousel-images").innerHTML +=`
     <div class="my-container-img">
         <img src=img/${countries[i].image} alt="${countries[i].name}">
-        <div class="my-container-descriptio p-2">
+        <div class="my-container-description p-2">
             <h2> ${countries[i].name} </h2>
             <p> ${countries[i].description}</p>
         </div>
