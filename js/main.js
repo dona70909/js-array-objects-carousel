@@ -138,10 +138,11 @@ document.querySelector("#my-after-carousel").innerHTML =`
 <button class="btn btn-warning" id="my-btn-stop">Stop!</button>
 `;
 
+
+
 const btnPlay = document.querySelector("#my-btn-play");
 btnPlay.addEventListener("click",function(){
 
-    let scoll = 0;
     const scrollInetrval = setInterval(scrollTime,2000);
     function scrollTime(){
         containerSmallCard[active].classList.remove("activeElement-small");
@@ -157,6 +158,14 @@ btnPlay.addEventListener("click",function(){
         containerSmallCard[active].classList.add("activeElement-small");
         containerBigCard[active].classList.remove("my-container-img");
         containerBigCard[active].classList.add("activeElement-big");
-        scroll++;
     }
+
+    const btnStop = document.querySelector("#my-btn-stop");
+    btnStop.addEventListener("click",function(){
+
+        clearInterval(scrollInetrval);
+    
+    });
 });
+
+
