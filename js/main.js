@@ -131,3 +131,32 @@ btnNext.addEventListener("click",function(){
     containerBigCard[active].classList.add("activeElement-big");
 
 });
+
+
+document.querySelector("#my-after-carousel").innerHTML =`
+<button class="btn btn-primary" id="my-btn-play">Play!</button>
+<button class="btn btn-warning" id="my-btn-stop">Stop!</button>
+`;
+
+const btnPlay = document.querySelector("#my-btn-play");
+btnPlay.addEventListener("click",function(){
+
+    let scoll = 0;
+    const scrollInetrval = setInterval(scrollTime,2000);
+    function scrollTime(){
+        containerSmallCard[active].classList.remove("activeElement-small");
+        containerBigCard[active].classList.add("my-container-img");
+        containerBigCard[active].classList.remove("activeElement-big");
+    
+        if(active === countries.length - 1){
+            active = 0;
+        } else{
+            active++;
+        }
+    
+        containerSmallCard[active].classList.add("activeElement-small");
+        containerBigCard[active].classList.remove("my-container-img");
+        containerBigCard[active].classList.add("activeElement-big");
+        scroll++;
+    }
+});
