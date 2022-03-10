@@ -49,100 +49,19 @@ for(let i = 0; i <  guzzantiCharacter.length; i++){
     `;
 }
 
-// #active element counter
-let active = 0;
-const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
-console.log(containerSmallCard);
-const containerBigCard = document.querySelectorAll(".my-carousel-images > .my-container-img");
-console.log(containerBigCard);
-
-// # first images
-containerSmallCard[active].classList.add("activeElement-small");
-containerBigCard[active].classList.remove("my-container-img");
-containerBigCard[active].classList.add("activeElement-big");
-
-// # prev and next
-const btnPrev = document.querySelector(".my-prev-hook");
-btnPrev.addEventListener("click", function(){
-    
-    containerBigCard[active].classList.add("my-container-img");
-    containerBigCard[active].classList.remove("activeElement-big");
-    
-    containerSmallCard[active].classList.remove("activeElement-small");
-    
-    if(active === 0){
-        active = guzzantiCharacter.length - 1;
-    } else {
-        active--;
-    }
-    
-    containerSmallCard[active].classList.add("activeElement-small");
-    containerBigCard[active].classList.remove("my-container-img");
-    containerBigCard[active].classList.add("activeElement-big");
-    
-});
-
-
-const btnNext = document.querySelector(".my-next-hook");
-btnNext.addEventListener("click",function(){
-    
-    containerSmallCard[active].classList.remove("activeElement-small");
-    containerBigCard[active].classList.add("my-container-img");
-    containerBigCard[active].classList.remove("activeElement-big");
-    
-    if(active === guzzantiCharacter.length - 1){
-        active = 0;
-    } else{
-        active++;
-    }
-    
-    containerSmallCard[active].classList.add("activeElement-small");
-    containerBigCard[active].classList.remove("my-container-img");
-    containerBigCard[active].classList.add("activeElement-big");
-    
-});
-
 // £add buttons to the html
 document.querySelector("#my-after-carousel").innerHTML =`
 <button class="btn btn-dark" id="my-btn-play">Slideshow!</button>
 <button class="btn btn-light" id="my-btn-pause">Pause!</button>
-<button class="btn btn-danger" id="my-btn-reverte">Revert!</button>
+<button class="btn btn-danger" id="my-btn-revert">Revert!</button>
 `;
 
 
-// %play and stop with timing functions
-const btnPlay = document.querySelector("#my-btn-play");
-btnPlay.addEventListener("click",function(){
-    
-    const scrollInetrval = setInterval(scrollTime,2000);
-    function scrollTime(){
-        containerSmallCard[active].classList.remove("activeElement-small");
-        containerBigCard[active].classList.add("my-container-img");
-        containerBigCard[active].classList.remove("activeElement-big");
-        
-        if(active === guzzantiCharacter.length - 1){
-            active = 0;
-        } else{
-            active++;
-        }
-        
-        containerSmallCard[active].classList.add("activeElement-small");
-        containerBigCard[active].classList.remove("my-container-img");
-        containerBigCard[active].classList.add("activeElement-big");
-    }
-    
-    const btnPause = document.querySelector("#my-btn-pause");
-    btnPause.addEventListener("click",function(){
-        
-        clearInterval(scrollInetrval);
-        
-    });
-});
+start();
 
+//  ! *************************** revert*******************************
 
-//  ! *************************** revert *******************************
-
-const btnRevert = document.getElementById("my-btn-reverte");
+const btnRevert = document.getElementById("my-btn-revert");
 btnRevert.addEventListener("click",function(){
     
     thumbnailsParent.innerHTML = " ";
@@ -176,6 +95,17 @@ btnRevert.addEventListener("click",function(){
         `;
     }
     
+
+    start();
+    
+    
+});
+
+
+
+//     !----------------- Function ----------------------
+function start(){
+
     // #active element counter
     let active = 0;
     const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
@@ -230,6 +160,8 @@ btnRevert.addEventListener("click",function(){
     });
     
     
+    
+    
     // %play and stop with timing functions
     const btnPlay = document.querySelector("#my-btn-play");
     btnPlay.addEventListener("click",function(){
@@ -258,7 +190,5 @@ btnRevert.addEventListener("click",function(){
             
         });
     });
-    
-    
-});
+}
 
