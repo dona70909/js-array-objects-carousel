@@ -51,9 +51,10 @@ for(let i = 0; i <  guzzantiCharacter.length; i++){
 
 // £add buttons to the html
 document.querySelector("#my-after-carousel").innerHTML =`
-<button class="btn btn-dark" id="my-btn-play">Slideshow!</button>
+<button class="btn btn-dark" id="my-btn-forward">Slideshow!</button>
 <button class="btn btn-light" id="my-btn-pause">Pause!</button>
 <button class="btn btn-danger" id="my-btn-revert">Revert!</button>
+<button class="btn btn-dark" id="my-btn-backward">Slideshow backward!</button>
 `;
 
 // £ call of the function that starts the eventlisteners(click on btn: next/prev slideshow/pause)
@@ -95,7 +96,7 @@ btnRevert.addEventListener("click",function(){
         `;
     }
     
-
+    
     start();
     
     
@@ -105,7 +106,7 @@ btnRevert.addEventListener("click",function(){
 
 //     !----------------- Function ----------------------
 function start(){
-
+    
     // #active element counter
     let active = 0;
     const containerSmallCard = document.querySelectorAll(".my-thumbnails > .my-container-img");
@@ -118,7 +119,7 @@ function start(){
     containerBigCard[active].classList.remove("my-container-img");
     containerBigCard[active].classList.add("activeElement-big");
     
-    // # prev and next
+    // # prev 
     const btnPrev = document.querySelector(".my-prev-hook");
     btnPrev.addEventListener("click", function(){
         
@@ -139,7 +140,7 @@ function start(){
         
     });
     
-    
+    //# next
     const btnNext = document.querySelector(".my-next-hook");
     btnNext.addEventListener("click",function(){
         
@@ -162,9 +163,9 @@ function start(){
     
     
     
-    // %play and stop with timing functions
-    const btnPlay = document.querySelector("#my-btn-play");
-    btnPlay.addEventListener("click",function(){
+    // %Forward slider
+    const btnForward = document.querySelector("#my-btn-forward");
+    btnForward.addEventListener("click",function(){
         
         const scrollInetrval = setInterval(scrollTime,2000);
         function scrollTime(){
@@ -190,5 +191,37 @@ function start(){
             
         });
     });
+    
+    // % BACKWARD SLIDER
+    const btnBackward = document.querySelector("#my-btn-backward");
+    btnBackward.addEventListener("click",function(){
+        
+        const scrollInetrvalBack = setInterval(scrollBack,2000);
+        function scrollBack(){
+            containerBigCard[active].classList.add("my-container-img");
+            containerBigCard[active].classList.remove("activeElement-big");
+            
+            containerSmallCard[active].classList.remove("activeElement-small");
+            
+            if(active === 0){
+                active = guzzantiCharacter.length - 1;
+            } else {
+                active--;
+            }
+            
+            containerSmallCard[active].classList.add("activeElement-small");
+            containerBigCard[active].classList.remove("my-container-img");
+            containerBigCard[active].classList.add("activeElement-big");
+        }
+        
+        const btnPause = document.querySelector("#my-btn-pause");
+        btnPause.addEventListener("click",function(){
+            
+            clearInterval(scrollInetrvalBack);
+            
+        });
+    });
 }
+
+
 
